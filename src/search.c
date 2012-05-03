@@ -68,7 +68,7 @@
  * 	<listitem>
  * 		<para>
  * 			<code>\<</code>
- * 			This matches the start of a word using GtkScintilla's definitions
+ * 			This matches the start of a word using Scintilla's definitions
  * 			of words.
  * 		</para>
  * 	</listitem>
@@ -136,7 +136,7 @@
 /**
  * gtk_scintilla_find_text:
  * @sci:				The #GtkScintilla object.
- * @text:				The search pattern.
+ * @pattern:			The search pattern.
  * @search_start_pos:	The position to start searching from.
  * @search_end_pos:		The position to end searching at.
  * @found_start_pos:	Location to store the start position of a match.
@@ -194,7 +194,7 @@ gboolean gtk_scintilla_find_text (GtkScintilla *sci,
  * and gtk_scintilla_search_previous() to the start of the current selection,
  * that is, the end of the selection that is nearer to the start of the
  * document.  You should always call this function before calling
- * gtk_scintilla_search_next() or gtk_scintill_search_previous().
+ * gtk_scintilla_search_next() or gtk_scintilla_search_previous().
  */
 inline void gtk_scintilla_search_anchor (GtkScintilla *sci) {
 	scintilla_send_message(SCINTILLA(sci), 2366, 0, 0);
@@ -377,7 +377,7 @@ inline gint gtk_scintilla_replace_target (GtkScintilla *sci, const gchar *text, 
 /**
  * gtk_scintilla_replace_target_regex:
  * @sci:	The #GtkScintilla object.
- * @text:	The search patern to search for in the target.
+ * @text:	The search pattern to search for in the target.
  * @length:	The number of characters to replace target with.
  *
  * Replaces the target with @length characters from @text.  If @length is -1,
