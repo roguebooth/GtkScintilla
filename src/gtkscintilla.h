@@ -160,10 +160,10 @@ void 		gtk_scintilla_insert_text (GtkScintilla *sci, gint pos, const gchar *text
 void 		gtk_scintilla_clear_all (GtkScintilla *sci);
 void 		gtk_scintilla_clear_document_style (GtkScintilla *sci);
 gint 		gtk_scintilla_get_length (GtkScintilla *sci);
-gchar 		gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos);
+gchar 		gtk_scintilla_get_char_at (GtkScintilla *sci, gint pos);
 gint 		gtk_scintilla_get_current_pos (GtkScintilla *sci);
 gint 		gtk_scintilla_get_anchor (GtkScintilla *sci);
-gchar 		gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos);
+gchar 		gtk_scintilla_get_style_at (GtkScintilla *sci, gint pos);
 void 		gtk_scintilla_redo (GtkScintilla *sci);
 void 		gtk_scintilla_set_undo_collection (GtkScintilla *sci, gboolean collectUndo);
 void 		gtk_scintilla_select_all (GtkScintilla *sci);

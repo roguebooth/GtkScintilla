@@ -444,7 +444,7 @@ void gtk_scintilla_clear_document_style (GtkScintilla *sci)
  *
  * @return: The character at @pos or '\0' if @pos is invalid.
  */
-gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos)
+gchar gtk_scintilla_get_char_at (GtkScintilla *sci, gint pos)
 {
 	g_return_val_if_fail(sci != NULL, '\0');
 
@@ -461,7 +461,7 @@ gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos)
  *
  * @return: The style at @pos or 0 if @pos is invalid.
  */
-gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos)
+gchar gtk_scintilla_get_style_at (GtkScintilla *sci, gint pos)
 {
 	g_return_val_if_fail(sci != NULL, '\0');
 
