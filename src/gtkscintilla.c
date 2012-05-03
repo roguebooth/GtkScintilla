@@ -99,7 +99,7 @@ static void gtk_scintilla_init(GtkScintilla *self)
  *
  * Creates a new GtkScintilla widget.
  *
- * @return A new GtkScintilla as a GtkWidget.
+ * @return A new GtkScintilla object as a GtkWidget.
  */
 GtkWidget *gtk_scintilla_new (void)
 {
@@ -109,7 +109,7 @@ GtkWidget *gtk_scintilla_new (void)
 
 /**
  * gtk_scintilla_send_message:
- * @param self		The GtkScintilla to send the message to.
+ * @param self		The GtkScintilla object to send the message to.
  * @param iMessage	The message code to send.
  * @param wParam	The first parameter for the message.
  * @param lParam	The second parameter for the message.
@@ -131,7 +131,7 @@ glong gtk_scintilla_send_message(GtkScintilla *self, guint iMessage,
 
 /**
  * gtk_scintilla_update_line_numbers:
- * @param self	The #GtkScintilla to operate on.
+ * @param self	The #GtkScintilla object to operate on.
  *
  * Causes the width of the line number margin to be re-calculated and
  * re-adjusted.
@@ -161,7 +161,7 @@ void gtk_scintilla_update_line_numbers(GtkScintilla *self)
  *
  * Gets whether the line number margin is visible or not.
  *
- * Returns: The visibility of the line number margin for the #GtkScintilla.
+ * Returns: The visibility of the line number margin for the #GtkScintilla object.
  **/
 gboolean gtk_scintilla_get_line_numbers_visible(GtkScintilla *self)
 {
@@ -174,7 +174,7 @@ gboolean gtk_scintilla_get_line_numbers_visible(GtkScintilla *self)
  * @self:		The #GtkScintilla object
  * @visible:	#TRUE for visible, #FALSE for hidden
  *
- * Sets the line number visibility to @visibility on the #GtkScintilla.
+ * Sets the line number visibility to @visible on the #GtkScintilla object.
  **/
 void gtk_scintilla_set_line_numbers_visible(GtkScintilla *self, gboolean visible)
 {

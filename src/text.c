@@ -52,7 +52,7 @@
  * All lines of text in #GtkScintilla are the same height, and this height is
  * calculated from the largest font in any current style.  This restriction
  * is for performance; if the lines differed in height then calculations
- * involving positioning of the text would require the to be styled first.
+ * involving positioning of the text would require them to be styled first.
  */
 
 #include "gtkscintilla.h"
@@ -90,7 +90,7 @@ void gtk_scintilla_set_text (GtkScintilla *sci, const gchar *text)
  *
  * Retrieves all the text in the document.
  *
- * Returns:	A newly-allocated string containing a copy of the text in the
+ * @return:	A newly-allocated string containing a copy of the text in the
  * 			document.  Free with g_free().
  */
 gchar *gtk_scintilla_get_text (GtkScintilla *sci)
@@ -137,11 +137,11 @@ void gtk_scintilla_set_save_point (GtkScintilla *sci)
  * @sci: 	The #GtkScintilla object.
  * @line:	The line number of the line to get.
  *
- * Retrieves the text of the specifed @line number.  The returned text includes
+ * Retrieves the text of the specified @line number.  The returned text includes
  * any end of line characters.  If you ask for a line number outside the range
  * of lines in the document, NULL is returned.
  *
- * Returns:	A newly-allocated string containing a copy of the text of the line
+ * @return:	A newly-allocated string containing a copy of the text of the line
  * 			or NULL if an invalid line was specified. Free with g_free().
  */
 gchar *gtk_scintilla_get_line (GtkScintilla *sci, guint line)
@@ -171,7 +171,7 @@ gchar *gtk_scintilla_get_line (GtkScintilla *sci, guint line)
  * @text:	The text to replace the currently selected text with.
  *
  * The currently selected text between the anchor and the current position is
- * replaced by the 0 terminated @text string.  If the anchor and the current
+ * replaced by the '\0' terminated @text string.  If the anchor and the current
  * position are the same, the text is inserted at the caret position.  The
  * caret is positioned after the inserted text and the caret is scrolled into
  * view.
@@ -205,7 +205,7 @@ void gtk_scintilla_set_read_only (GtkScintilla *sci, gboolean read_only)
  *
  * Gets the read-only flag for the document.
  *
- * Returns: TRUE if the document is read-only, FALSE if it is not.
+ * @return: TRUE if the document is read-only, FALSE if it is not.
  */
 gboolean gtk_scintilla_get_read_only (GtkScintilla *sci)
 {
@@ -223,7 +223,7 @@ gboolean gtk_scintilla_get_read_only (GtkScintilla *sci)
  * Gets the text between @start_pos and @end_pos.  If @end_pos is -1, text
  * is returned to the end of the document.
  *
- * Returns: A newly-allocated string containing the text between the start and
+ * @return: A newly-allocated string containing the text between the start and
  * 			end position or NULL if the the text could not be retrieved or was
  * 			empty.  Free with g_free().
  */
@@ -276,7 +276,7 @@ gchar *gtk_scintilla_get_text_range (GtkScintilla *sci, guint start_pos, gint en
  * Characters between the text positions @start_pos and @end_pos are returned.
  * Two 0 bytes are added to the end of the text.
  *
- * Returns: A newly-allocated string containing the style text (cells) between
+ * @return: A newly-allocated string containing the style text (cells) between
  * 			@start_pos and @end_pos or NULL if the text could not be retrieved
  * 			or was empty.  Free with g_free().
  */
@@ -339,7 +339,7 @@ void gtk_scintilla_allocate (GtkScintilla *sci, guint bytes)
  * @text:	The text to add the first @length characters of.
  *
  * Inserts the first @length characters from the string @text at the current
- * position.  This will include any 0's in @text that you might have expected
+ * position.  This will include any '\0's in @text that you might have expected
  * to stop the insert operation.  The current position is set at the end of
  * the inserted text, but it is not scrolled into view.
  */
@@ -356,9 +356,9 @@ void gtk_scintilla_add_text (GtkScintilla *sci, guint length, const gchar *text)
  * @length:			The number of cells in @text to add.
  * @styled_text:	The styled text to add the first @length characters of.
  *
- * Inserts the first @legth cells from the styled @text at the current position.
- * This function behabes just like gtk_scintilla_add_text() except each byte
- * contains both a character and style byte.
+ * Inserts the first @length cells from the @styled_text at the current position.
+ * This function behaves just like gtk_scintilla_add_text() except each cell
+ * contains both a character and a style byte.
  *
  * See also gtk_scintilla_get_styled_text_range() for a description of styled
  * text.
@@ -377,7 +377,7 @@ void gtk_scintilla_add_styled_text (GtkScintilla *sci, guint length, const gchar
  * @text:	The text to append the first @length characters of.
  *
  * Adds the first @length characters from the string @text to the end of the
- * document.  This will include any 0's in the string that you might have
+ * document.  This will include any '\0's in the string that you might have
  * expected to stop the operation.  The current selection is not changed and
  * the new text is not scrolled into view.
  */
@@ -391,7 +391,7 @@ void gtk_scintilla_append_text (GtkScintilla *sci, guint length, const gchar *te
 /**
  * gtk_scintilla_insert_text:
  * @sci:	The #GtkScintilla object.
- * @pos:	The position to insert the @text at.
+ * @pos:	The position at which to insert the @text.
  * @text:	The text to insert at @pos.
  *
  * Inserts the zero-terminated string @text at position @pos or at the current
@@ -442,7 +442,7 @@ void gtk_scintilla_clear_document_style (GtkScintilla *sci)
  * Gets the character at @pos in the document or 0 if @pos is negative or past
  * the end of the document.
  *
- * Returns: The character at @pos or 0 if @pos is invalid.
+ * @return: The character at @pos or '\0' if @pos is invalid.
  */
 gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos)
 {
@@ -459,7 +459,7 @@ gchar gtk_scintilla_get_char_at (GtkScintilla *sci, guint pos)
  * Gets the style at @pos in the document or 0 if @pos is negative or past the
  * end of the document.
  *
- * Returns: The style at @pos or 0 if @pos is invalid.
+ * @return: The style at @pos or 0 if @pos is invalid.
  */
 gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos)
 {
@@ -473,7 +473,7 @@ gchar gtk_scintilla_get_style_at (GtkScintilla *sci, guint pos)
  * @sci:	The #GtkScintilla object.
  * @bits:	The number of bits in each cell to use for styling.
  *
- * Sets the number of bits in each cell to use for styling, to a maximum of
+ * Sets the number of bits in each cell to use for styling, up to a maximum of
  * 8 style bits.  The remaining bits can be used as indicators.  The standard
  * setting for @bits is 5.  The number of styling bits needed by the current
  * lexer can be found with gtk_scintilla_get_style_bits_needed().
@@ -493,7 +493,7 @@ void gtk_scintilla_set_style_bits (GtkScintilla *sci, guchar bits)
  * Gets the number of bits in each cell to use for styling, to a maximum of 8
  * style bits.
  *
- * Returns: The number of bits in each cell used for styling.
+ * @return: The number of bits in each cell used for styling.
  */
 guchar gtk_scintilla_get_style_bits (GtkScintilla *sci)
 {
@@ -508,7 +508,7 @@ guchar gtk_scintilla_get_style_bits (GtkScintilla *sci)
  *
  * Retrieves the value of the target encoded as UTF-8.
  *
- * Returns:	A newly allocated string containing the UTF-8 encoded target text
+ * @return:	A newly allocated string containing the UTF-8 encoded target text
  * 			or NULL if the target size is 0.  Free with g_free().
  */
 gchar *gtk_scintilla_target_as_utf8 (GtkScintilla *sci)
@@ -540,12 +540,12 @@ gchar *gtk_scintilla_target_as_utf8 (GtkScintilla *sci)
  *
  * Converts @utf8 UTF-8 encoded string into the document's encoding which is
  * useful for taking the results of a find dialog, for example, and receiving
- * a string of bytes that can be search for in the document.  Since the text
+ * a string of bytes that can be searched for in the document.  Since the text
  * can contain nul bytes, the @bytes parameter maybe be used to set the length
  * that will be converted.  If @bytes is set to -1, the length is determined
  * by finding a nul byte.
  *
- * Returns: A newly allocated string in containing the text from @utf8,
+ * @return: A newly allocated string containing the text from @utf8,
  * 			converted into the document's encoding, or NULL if the string
  * 			could not be converted.  Free with g_free().
  */
